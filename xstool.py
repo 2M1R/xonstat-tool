@@ -13,9 +13,14 @@ class XonStatForm(QtGui.QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.keypath = os.path.expanduser('~/.xonotic/key_0.d0si')
-                
-        QtCore.QObject.connect(self.ui.btnImport, QtCore.SIGNAL("clicked()"), self.file_import)
-        QtCore.QObject.connect(self.ui.btnExport, QtCore.SIGNAL("clicked()"), self.file_export)
+        
+        # Signals
+        self.ui.btnImport.clicked.connect(self.file_import)
+        self.ui.btnExport.clicked.connect(self.file_export)
+        
+        # Old style signals
+        # QtCore.QObject.connect(self.ui.btnImport, QtCore.SIGNAL("clicked()"), self.file_import)
+        # QtCore.QObject.connect(self.ui.btnExport, QtCore.SIGNAL("clicked()"), self.file_export)
         
     def file_import(self):
         sourcepath = self.ui.lineImport.text()
